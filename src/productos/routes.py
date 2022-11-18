@@ -42,3 +42,5 @@ def index_productos(): # get_productos() idProducto, Nombre, Imagen
                            categorias = lista_categorias["resultado"],
                            productos = lista_productos["resultado"] ) # 'OK'
 
+    # Prueba final
+
