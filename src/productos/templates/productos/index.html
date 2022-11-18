@@ -1,0 +1,53 @@
+{% extends 'plantilla.html' %}
+
+
+
+{% block categorias %}
+<!-- Aqui se muestran las categorias  -->
+{% for categoria in categorias: %}
+    <div class="col-lg-2 col-md-4 ">
+        <div class="sort w-100 text-center ftco-animate">
+            <a href="#">
+                <div class="img" style="background-image: url(../static/img/categorias/{{ categoria.imagenCategoria  }});">
+                </div>
+            </a>
+            <h3>{{ categoria.nombreCategoria  }}</h3>
+        </div>
+    </div>
+ {% endfor %}
+{% endblock %}
+
+{% block productosDestacados %}
+{% for producto in productos: %}
+<div class="col-md-3 d-flex">
+    <div class="product ftco-animate">
+        <div class="img d-flex align-items-center justify-content-center" style="background-image: url(../static/img/productos/{{ producto.productoImagen }});">
+            <div class="desc">
+                <p class="meta-prod d-flex">
+                    <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a> <!-- Carrito -->
+                    <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-heart"></span></a> <!-- deseo -->
+                    <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a> <!-- Producto-Ver -->
+                </p>
+            </div>
+        </div>
+        <div class="text text-center">
+            {% if producto.productoTipo == 2 %}
+                <span class="sale">Rebaja</span> <!-- Rebaja -->
+            {% endif %}
+
+            {% if producto.productoTipo == 3 %}
+                <span class="seller">Más Vendido</span> <!-- Rebaja -->
+            {% endif %}
+
+            {% if producto.productoTipo == 4 %}
+                <span class="new">Nuevo</span> <!-- Rebaja -->
+            {% endif %}
+
+            <span class="category">{{ producto.idCategoria.nombreCategoriaProducto }}</span><!--  Categoria -->
+            <h2>{{ producto.productoNombreCorto }}</h2> <!-- Nombre del vino -->
+            <p class="mb-0"><span class="price price-sale">$69.00</span> <span class="price">$49.00</span></p> <!-- Precio de Oferta y precio Final -->
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}
