@@ -14,7 +14,9 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css' ) }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.theme.default.min.css' ) }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/magnific-popup.css' ) }}">
-    
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.min.css">
+
     <link rel="stylesheet" href="{{ url_for('static', filename='css/flaticon.css' ) }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css' ) }}">
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/misestilos.css' ) }}">
@@ -125,144 +127,21 @@
         </div>
       </div>
     </div>
-	<!-- Termina el encabezado
-	Inica otra seccion -->
-    <section class="ftco-intro">
-    	<div class="container">
-    		<div class="row no-gutters">
-    			<div class="col-md-4 d-flex">
-    				<div class="intro d-lg-flex w-100 ftco-animate">
-    					<div class="icon">
-    						<span class="flaticon-support"></span>
-    					</div>
-    					<div class="text">
-    						<h2>Asesoría 24/7</h2>
-    						<p>Lo asesoramos en todo tipo de evento para que le de gusto a su paladar y a sus invitados.</p>
-    					</div>
-    				</div>
-    			</div>
-    			<div class="col-md-4 d-flex">
-    				<div class="intro color-1 d-lg-flex w-100 ftco-animate">
-    					<div class="icon">
-    						<span class="flaticon-cashback"></span>
-    					</div>
-    					<div class="text">
-    						<h2>Garantía de Reembolso</h2>
-    						<p>Si no le satisface nuestro servicio, siéntase con la seguridad que le reintegramos su dinero.</p>
-    					</div>
-    				</div>
-    			</div>
-    			<div class="col-md-4 d-flex">
-    				<div class="intro color-2 d-lg-flex w-100 ftco-animate">
-    					<div class="icon">
-    						<span class="flaticon-free-delivery"></span>
-    					</div>
-    					<div class="text">
-    						<h2>Envío gratis &amp; garantizado</h2>
-    						<p>Nosotros nos preocupamos por Usted, para que todo este listo para su evento.</p>
-    					</div>
-    				</div>
-    			</div>
-    		</div>
-    	</div>
-    </section>
 
-    <section class="ftco-section ftco-no-pb">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-6 img img-3 d-flex justify-content-center align-items-center" style="background-image: url({{ url_for('static', filename='images/about.jpg' ) }});"></div>
-				<div class="col-md-6 wrap-about pl-md-5 ftco-animate py-5">
-					<div class="heading-section">
-						<span class="subheading">Desde 1905</span>
-						<h2 class="mb-4">El deseo se encuentra con un Nuevo Gusto</h2>
+	{% block productosGenerales %}
+	{% endblock %}
 
-						<p>Almacén de Vinos Jiquilpan, desde siempre lo mejor en vinos de mesa, disfruta de un mundo paradisíaco. Satisface tu paladar con nuestros productos añejados.</p>
-						<p>Mi pobre corazón de angustia herido
-							y de locura, no podrá curarse
-							de esta embriaguez de amor, ni libertarse
-							de la prisión donde quedó sumido.
-							Pienso que el día de la creación
-							en que el vino de amor fue al hombre dado,
-							el que llenó mi copa fue esenciado
-							con sangre de mi propio corazón.
-						</p>
-						<p class="year">
-							<strong class="number" data-number="115">0</strong>
-							<span>Años de Experiencia en el Negocio</span>
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+	{% block asesoria %}
+	{% endblock  %}
 
-	<!-- Inician las categorias -->
-	<section class="ftco-section ftco-no-pb">
-		<div class="container">
-			<div class="row">
-				{% block categorias %}
+	{% block desde1905 %}
+	{% endblock %}
 
-				{% endblock %}
+	{% block categorias %}
+	{% endblock %}
 
-<!--				<div class="col-lg-2 col-md-4 ">-->
-<!--					<div class="sort w-100 text-center ftco-animate">-->
-<!--						<div class="img" style="background-image: url({{ url_for('static', filename='images/kind-2.jpg') }});">-->
-<!--						</div>-->
-<!--						<h3>Gin</h3>-->
-<!--					</div>-->
-<!--				</div>-->
-<!--				<div class="col-lg-2 col-md-4 ">-->
-<!--					<div class="sort w-100 text-center ftco-animate">-->
-<!--						<div class="img" style="background-image: url(images/kind-3.jpg);">-->
-<!--						</div>-->
-<!--							<h3>Rum</h3>-->
-<!--					</div>-->
-<!--				</div>-->
-<!--				<div class="col-lg-2 col-md-4 ">-->
-<!--					<div class="sort w-100 text-center ftco-animate">-->
-<!--						<div class="img" style="background-image: url(images/kind-4.jpg);">-->
-<!--						</div>-->
-<!--						<h3>Tequila</h3>-->
-<!--					</div>-->
-<!--				</div>-->
-<!--				<div class="col-lg-2 col-md-4 ">-->
-<!--					<div class="sort w-100 text-center ftco-animate">-->
-<!--						<div class="img" style="background-image: url(images/kind-5.jpg);">-->
-<!--						</div>-->
-<!--						<h3>Vodka</h3>-->
-<!--						</div>-->
-<!--					</div>-->
-<!--				<div class="col-lg-2 col-md-4 ">-->
-<!--					<div class="sort w-100 text-center ftco-animate">-->
-<!--						<div class="img" style="background-image: url(images/kind-6.jpg);"></div>-->
-<!--						<h3>Whiskey</h3>-->
-<!--					</div>-->
-<!--				</div>-->
-			</div>
-		</div>
-	</section>
-
-	<section class="ftco-section">
-		<div class="container">
-			<div class="row justify-content-center pb-5">
-				<div class="col-md-7 heading-section text-center ftco-animate">
-					<span class="subheading">Ofertas deliciosas</span>
-					<h2>Con su buen gusto</h2>
-				</div>
-			</div>
-			<div class="row">
-				<!-- Aqui se muestran los productos  -->
-				{% block productosDestacados %}
-
-				{% endblock %}
-			</div>
-			<div class="row justify-content-center">
-				<div class="col-md-4">
-					<a href="product.html" class="btn btn-primary d-block">Ver todos los productos <span class="fa fa-long-arrow-right"></span></a>
-				</div>
-			</div>
-		</div>
-	</section>
+	{% block productosDestacados %}
+	{% endblock %}
   
     <section class="ftco-section testimony-section img" style="background-image: url({{ url_for('static', filename='images/bg_4.jpg' ) }});">
     	<div class="overlay"></div>
@@ -549,8 +428,11 @@
 <!--  <script src="js/google-map.js"></script>-->
 	<script src="{{ url_for('static', filename='js/google-map.js' ) }}"></script>
 
+
 <!--  <script src="js/main.js"></script>-->
   <script src="{{ url_for('static', filename='js/main.js' ) }}"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
     
   </body>
 </html>

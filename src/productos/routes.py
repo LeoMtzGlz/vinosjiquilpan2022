@@ -31,7 +31,7 @@ def index_productos(): # get_productos() idProducto, Nombre, Imagen
         "productoImagen": 1,
         "idCategoria.nombreCategoriaProducto": 1
     }
-    lista_productos = objPyMongo.consulta_mongodb('productos', { 'productoTipo': {'$ne': 1} }, campos)
+    lista_productos = objPyMongo.consulta_mongodb('productos',{'productoTipo':{'$ne':1}}, campos)
     # Cerrar la conexion
     objPyMongo.desconectar_mongodb()
     # Imprimir categorias

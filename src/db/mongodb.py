@@ -49,29 +49,6 @@ class PyMongo():
         self.MONGO_RESPUESTA = self.MONGO_CLIENT[self.MONGO_DATABASE][tabla].update_many(filtro,nuevos_valores)
         if self.MONGO_RESPUESTA:
             response["status"] = True
-            # return self.MONGO_RESPUESTA
-        # else:
-        #     return None
-        return response
-
-    # Obtener el promedio de estudiantes
-    def obtener_promedios(self,tabla):
-        response = {"status": False, "resultado": []}
-        self.MONGO_RESPUESTA = self.MONGO_CLIENT[self.MONGO_DATABASE][tabla].aggregate(
-                                  [
-                                    {
-                                      "$group":
-                                      {
-                                        "_id": "$control",
-                                        "promedio": { "$avg": "$calificacion" }
-                                      }
-                                    }
-                                  ]
-                                )
-        if self.MONGO_RESPUESTA:
-            response["status"] = True
-            for reg in self.MONGO_RESPUESTA:
-                response["resultado"].append(reg)
         return response
 
     # Eliminar documentos en las colecciones
