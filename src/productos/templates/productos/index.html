@@ -74,7 +74,7 @@
                             <h3>Product Types</h3>
                             <ul class="p-0">
                                 {% for categoria in categorias: %}
-					                <li><a href="#">{{categoria.nombreCategoria}} <span class="fa fa-chevron-right"></span></a></li>
+					                <li><a href="?idCategoria={{categoria.idCategoria}}">{{categoria.nombreCategoria}} <span class="fa fa-chevron-right"></span></a></li>
 				                {% endfor %}
                             </ul>
                         </div>

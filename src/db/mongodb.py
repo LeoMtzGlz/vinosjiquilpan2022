@@ -34,6 +34,70 @@ class PyMongo():
                 response["resultado"].append(reg)
         return response
 
+    def consulta_general_productos(self,tabla, filtro_registros=None, atributos=None):
+        response = {"status": False, "resultado":[]}
+        lista_pipelines = []
+        # 1. Pipeline Filtro
+        filtro = {
+             '$match': {
+              'productoTipo':{'$ne': 1}
+                }
+        }
+
+        # 2. Pipeline Calculo del Precio y Descuento
+        proyeccion = {
+            '$project': {
+                '_id':0,
+                'idCategoria': "$idCategoria.idCategoria",
+                'nombreCategoria': "$idCategoria.nombreCategoriaProducto",
+                'idProducto': 1,
+                'productoTipo':1,
+                'productoNombreCorto':1,
+                'productoImagen':1,
+                'productoCosto': 1,
+                'precioVenta':
+                {
+                    '$subtract':[{
+                        '$add':[
+                            {
+                                '$multiply': [
+                                    '$productoCosto',
+                                    { '$divide': ['$productoGanancia', 100] }
+                                ]
+                            },
+                            '$productoCosto'
+                        ]
+                    },
+                    {
+                        '$multiply':[
+                            '$productoCosto',
+                            { '$divide': ['$productoDescuento', 100] }
+                        ]
+                    }]
+                },
+                'descuento':{
+                    '$multiply':[
+                            '$productoCosto',
+                            { '$divide': ['$productoDescuento', 100] }
+                        ]
+                }
+            }
+        }
+
+        # Agregar los niveles que se requieren
+        if filtro_registros == None:
+            lista_pipelines.append(filtro)
+        else:
+            lista_pipelines.append(filtro_registros)
+        lista_pipelines.append(proyeccion)
+
+
+        self.MONGO_RESPUESTA = self.MONGO_CLIENT[self.MONGO_DATABASE][tabla].aggregate(lista_pipelines)
+        if self.MONGO_RESPUESTA:
+            response["status"] = True
+            for reg in self.MONGO_RESPUESTA:
+                response["resultado"].append(reg)
+        return response
 
     # Insertar datos en la coleccion de estudiantes
     def insertar(self, tabla, documento):

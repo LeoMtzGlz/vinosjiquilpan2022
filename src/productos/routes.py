@@ -1,4 +1,4 @@
-from flask import render_template
+from flask import render_template, request
 from src.db.mongodb import PyMongo
 from . import producto
 
@@ -14,6 +14,13 @@ varmongo= {"host": "localhost",
 # Ruta: http://127.0.0.1:5000/productos
 @producto.route('/')
 def index_productos(): # get_productos() idProducto, Nombre, Imagen
+    # Leer lo que traemos en la cadena de consulta
+
+    print("ID: ", request.args.get('idCategoria'))
+    if request.args.get('idCategoria') != None:
+        filtro = {'idCategoria.idCategoria': int(request.args.get('idCategoria')) }
+    else:
+        filtro = {}
     # Abrir BAse de Datos
     objPyMongo = PyMongo(varmongo)
     # Consultar
@@ -31,7 +38,7 @@ def index_productos(): # get_productos() idProducto, Nombre, Imagen
         "productoImagen": 1,
         "idCategoria.nombreCategoriaProducto": 1
     }
-    lista_productos = objPyMongo.consulta_mongodb('productos',{'productoTipo':{'$ne':1}}, campos)
+    lista_productos = objPyMongo.consulta_mongodb('productos',filtro, campos) #{'productoTipo':{'$ne':1}}
     # Cerrar la conexion
     objPyMongo.desconectar_mongodb()
     # Imprimir categorias

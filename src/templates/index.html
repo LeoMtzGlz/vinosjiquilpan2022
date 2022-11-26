@@ -81,7 +81,7 @@
 				{% for categoria in categorias: %}
 					<div class="col-lg-2 col-md-4 ">
 						<div class="sort w-100 text-center ftco-animate">
-							<a href="#">
+							<a href="productos/?idCategoria={{categoria.idCategoria}}">
 								<div class="img" style="background-image: url(../static/img/categorias/{{ categoria.imagenCategoria  }});">
 								</div>
 							</a>
@@ -111,8 +111,8 @@
 							<div class="desc">
 								<p class="meta-prod d-flex">
 									<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a> <!-- Carrito -->
-									<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-heart"></span></a> <!-- deseo -->
-									<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a> <!-- Producto-Ver -->
+									<!-- <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-heart"></span></a>  deseo -->
+									<!-- <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a> Producto-Ver -->
 								</p>
 							</div>
 						</div>
@@ -131,7 +131,12 @@
 
 							<span class="category">{{ producto.nombreCategoria }}</span><!--  Categoria -->
 							<h2>{{ producto.productoNombreCorto }}</h2> <!-- Nombre del vino -->
-							<p class="mb-0"><span class="price price-sale">$69.00</span> <span class="price">$49.00</span></p> <!-- Precio de Oferta y precio Final -->
+							<p class="mb-0">
+								{% if producto.productoTipo == 3 %}
+									<span class="price price-sale">$ {{ "{:.2f}".format(producto.precioVenta - producto.descuento) }}</span>
+								{% endif %}
+								<span class="price">$ {{ "{:.2f}".format(producto.precioVenta) }}</span>
+							</p> <!-- Precio de Oferta y precio Final -->
 						</div>
 					</div>
 				</div>
