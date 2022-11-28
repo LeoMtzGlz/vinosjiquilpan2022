@@ -44,7 +44,12 @@
 
                                         <span class="category">{{ producto.nombreCategoria }}</span><!--  Categoria -->
                                         <h2>{{ producto.productoNombreCorto }}</h2> <!-- Nombre del vino -->
-                                        <p class="mb-0"><span class="price price-sale">$69.00</span> <span class="price">$49.00</span></p> <!-- Precio de Oferta y precio Final -->
+                                        <p class="mb-0">
+                                            {% if producto.productoTipo == 3 %}
+                                                <span class="price price-sale">$ {{ "{:.2f}".format(producto.precioVenta) }}</span>
+                                            {% endif %}
+                                            <span class="price">$ {{ "{:.2f}".format(producto.precioVenta - producto.descuento) }}</span>
+                                        </p> <!-- Precio de Oferta y precio Final -->
                                     </div>
                                 </div>
                             </div>
@@ -54,15 +59,15 @@
                     <div class="row mt-5">
                         <div class="col text-center">
                             <div class="block-27">
-                                <ul>
-                                    <li><a href="#">&lt;</a></li>
-                                    <li class="active"><span>1</span></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">4</a></li>
-                                    <li><a href="#">5</a></li>
-                                    <li><a href="#">&gt;</a></li>
-                                </ul>
+<!--                                <ul>-->
+<!--                                    <li><a href="#">&lt;</a></li>-->
+<!--                                    <li class="active"><span>1</span></li>-->
+<!--                                    <li><a href="#">2</a></li>-->
+<!--                                    <li><a href="#">3</a></li>-->
+<!--                                    <li><a href="#">4</a></li>-->
+<!--                                    <li><a href="#">5</a></li>-->
+<!--                                    <li><a href="#">&gt;</a></li>-->
+<!--                                </ul>-->
                             </div>
                         </div>
                     </div>

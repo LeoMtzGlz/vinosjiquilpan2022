@@ -18,9 +18,11 @@ def index_productos(): # get_productos() idProducto, Nombre, Imagen
 
     print("ID: ", request.args.get('idCategoria'))
     if request.args.get('idCategoria') != None:
-        filtro = {'idCategoria.idCategoria': int(request.args.get('idCategoria')) }
+        filtro = {
+                    "$match": { 'idCategoria.idCategoria': int(request.args.get('idCategoria')) }
+                 }  #  {'idCategoria.idCategoria': int(request.args.get('idCategoria')) }
     else:
-        filtro = {}
+        filtro = { "$match": {  } }  #'productoTipo':{'$ne': 1}
     # Abrir BAse de Datos
     objPyMongo = PyMongo(varmongo)
     # Consultar
@@ -38,7 +40,7 @@ def index_productos(): # get_productos() idProducto, Nombre, Imagen
         "productoImagen": 1,
         "idCategoria.nombreCategoriaProducto": 1
     }
-    lista_productos = objPyMongo.consulta_mongodb('productos',filtro, campos) #{'productoTipo':{'$ne':1}}
+    lista_productos = objPyMongo.consulta_general_productos('productos',filtro) #{'productoTipo':{'$ne':1}}
     # Cerrar la conexion
     objPyMongo.desconectar_mongodb()
     # Imprimir categorias
