@@ -42,7 +42,10 @@
 			    		</p>
 		        </div>
 		        <div class="reg">
-		        	<p class="mb-0"><a href="#" class="mr-2">Registrate</a> <a href="#">Iniciar sesión</a></p>
+		        	<p class="mb-0">
+						<a href="/clientes/registrar" class="mr-2">Registrate</a>
+						<a href="/clientes/login">Iniciar sesión</a>
+					</p>
 		        </div>
 					</div>
 				</div>
@@ -51,7 +54,7 @@
     
 	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
-	      <a class="navbar-brand" href="/productos"><span>Almacén de </span>Vinos</a>
+	      <a class="navbar-brand" href="/"><span>Almacén de </span>Vinos</a>
 	      <div class="order-lg-last btn-group">
           <a href="#" class="btn-cart dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           	<span class="flaticon-shopping-bag"></span>
@@ -95,12 +98,12 @@
 
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item active"><a href="index.html" class="nav-link">Inicio</a></li>
+	          <li class="nav-item active"><a href="/" class="nav-link">Inicio</a></li>
 	          <li class="nav-item"><a href="about.html" class="nav-link">Acerca de</a></li>
 	          <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Productos</a>
               <div class="dropdown-menu" aria-labelledby="dropdown04">
-              	<a class="dropdown-item" href="product.html">Productos</a>
+              	<a class="dropdown-item" href="/productos">Productos</a>
                 <a class="dropdown-item" href="product-single.html">Productos únicos</a>
                 <a class="dropdown-item" href="cart.html">Carrito</a>
                 <a class="dropdown-item" href="checkout.html">Revisar cuenta</a>
@@ -127,6 +130,19 @@
         </div>
       </div>
     </div>
+
+	{% block slogan %}
+	{% endblock %}
+
+	{% block login %}
+		{% block mensajeLogin %}
+		{% endblock %}
+	{% endblock %}
+
+	{% block registro %}
+		{% block mensaje %}
+		{% endblock %}
+	{% endblock %}
 
 	{% block productosGenerales %}
 	{% endblock %}
@@ -433,6 +449,9 @@
   <script src="{{ url_for('static', filename='js/main.js' ) }}"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+
+  {% block misEscripts %}
+  {% endblock %}
     
   </body>
 </html>

@@ -18,4 +18,7 @@ def create_app():
     from .productos import producto
     app.register_blueprint(producto)
 
+    from .clientes import cliente
+    app.register_blueprint(cliente)
+
     return app
