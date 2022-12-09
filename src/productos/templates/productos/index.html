@@ -16,20 +16,21 @@
                             </select>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row" id="lista-productos">
                         {% for producto in productos: %}
                             <div class="col-md-4 d-flex">
-                                <div class="product ftco-animate">
+                                <div class="product ftco-animate mi-producto">
                                     <div class="img d-flex align-items-center justify-content-center" style="background-image: url(../static/img/productos/{{ producto.productoImagen }});">
                                         <div class="desc">
                                             <p class="meta-prod d-flex">
-                                                <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a> <!-- Carrito -->
+                                                <a href="#" class="d-flex align-items-center justify-content-center agregar-carrito" data-id="{{producto.idProducto}}" ><span class="flaticon-shopping-bag"></span></a>
+                                               <!--  <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a> Carrito -->
                                                 <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-heart"></span></a> <!-- deseo -->
                                                 <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a> <!-- Producto-Ver -->
                                             </p>
                                         </div>
                                     </div>
-                                    <div class="text text-center">
+                                    <div class="text text-center info-producto">
                                         {% if producto.productoTipo == 2 %}
                                             <span class="seller">Más Vendido</span> <!-- Rebaja -->
                                         {% endif %}
@@ -48,7 +49,7 @@
                                             {% if producto.productoTipo == 3 %}
                                                 <span class="price price-sale">$ {{ "{:.2f}".format(producto.precioVenta) }}</span>
                                             {% endif %}
-                                            <span class="price">$ {{ "{:.2f}".format(producto.precioVenta - producto.descuento) }}</span>
+                                            <span class="price precio-producto">$ {{ "{:.2f}".format(producto.precioVenta - producto.descuento) }}</span>
                                         </p> <!-- Precio de Oferta y precio Final -->
                                     </div>
                                 </div>
@@ -122,4 +123,8 @@
             </div>
         </div>
     </section>
+{% endblock %}
+
+{% block misEscripts %}
+    <script src="{{url_for('static', filename='js/js/app.js')}}"></script>
 {% endblock %}

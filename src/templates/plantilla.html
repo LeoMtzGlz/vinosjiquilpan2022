@@ -58,38 +58,17 @@
 	      <div class="order-lg-last btn-group">
           <a href="#" class="btn-cart dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           	<span class="flaticon-shopping-bag"></span>
-          	<div class="d-flex justify-content-center align-items-center"><small>3</small></div>
+          	<div class="d-flex justify-content-center align-items-center"><small class="numero-productos">3</small></div>
           </a>
 		  <!-- Inicia carrito -->
-          <div class="dropdown-menu dropdown-menu-right">
+          <div class="dropdown-menu dropdown-menu-right" id="mi-carrito">
 
-				    <div class="dropdown-item d-flex align-items-start" href="#">
-				    	<div class="img" style="background-image: url({{ url_for('static', filename='images/prod-1.jpg') }});"></div>
-				    	<div class="text pl-3">
-				    		<h4>Bacardi 151</h4>
-				    		<p class="mb-0"><a href="#" class="price">$25.99</a><span class="quantity ml-3">Quantity: 01</span></p>
-				    	</div>
-				    </div> <!-- Termina el primer producto del carrito -->
 
-				    <div class="dropdown-item d-flex align-items-start" href="#">
-				    	<div class="img" style="background-image: url({{ url_for('static', filename='images/prod-2.jpg') }});"></div>
-				    	<div class="text pl-3">
-				    		<h4>Jim Beam Kentucky Straight</h4>
-				    		<p class="mb-0"><a href="#" class="price">$30.89</a><span class="quantity ml-3">Quantity: 02</span></p>
-				    	</div>
-				    </div>
-				    <div class="dropdown-item d-flex align-items-start" href="#">
-				    	<div class="img" style="background-image: url({{ url_for('static', filename='images/prod-3.jpg') }});"></div>
-				    	<div class="text pl-3">
-				    		<h4>Citadelle</h4>
-				    		<p class="mb-0"><a href="#" class="price">$22.50</a><span class="quantity ml-3">Quantity: 01</span></p>
-				    	</div>
-				    </div>
-				    <a class="dropdown-item text-center btn-link d-block w-100" href="cart.html">
+				    <a class="dropdown-item text-center btn-link d-block w-100" href="/pedidos/carrito">  <!-- /pedidos/carrito  -->
 				    	Ver todos los productos
 				    	<span class="ion-ios-arrow-round-forward"></span>
 				    </a>
-				  </div>
+		  </div>
         </div>
 
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -98,15 +77,15 @@
 
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item active"><a href="/" class="nav-link">Inicio</a></li>
+	          <li class="nav-item active"><a href="{{url_for('index')}}" class="nav-link">Inicio</a></li>
 	          <li class="nav-item"><a href="about.html" class="nav-link">Acerca de</a></li>
 	          <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Productos</a>
               <div class="dropdown-menu" aria-labelledby="dropdown04">
-              	<a class="dropdown-item" href="/productos">Productos</a>
+              	<a class="dropdown-item" href="/">Productos</a>
                 <a class="dropdown-item" href="product-single.html">Productos únicos</a>
-                <a class="dropdown-item" href="cart.html">Carrito</a>
-                <a class="dropdown-item" href="checkout.html">Revisar cuenta</a>
+                <a class="dropdown-item" href="/pedidos/carrito">Carrito</a>
+                <a class="dropdown-item" href="/pedidos/checkout">Revisar cuenta</a>
               </div>
             </li>
 	          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
@@ -142,6 +121,14 @@
 	{% block registro %}
 		{% block mensaje %}
 		{% endblock %}
+	{% endblock %}
+
+	{% block carrito %}
+		{% block mensajeCarrito %}
+		{% endblock %}
+	{% endblock %}
+
+	{% block caja %}
 	{% endblock %}
 
 	{% block productosGenerales %}
@@ -440,9 +427,9 @@
 	<script src="{{ url_for('static', filename='js/scrollax.min.js' ) }}"></script>
 
 
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+<!--  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>-->
 <!--  <script src="js/google-map.js"></script>-->
-	<script src="{{ url_for('static', filename='js/google-map.js' ) }}"></script>
+<!--	<script src="{{ url_for('static', filename='js/google-map.js' ) }}"></script>-->
 
 
 <!--  <script src="js/main.js"></script>-->

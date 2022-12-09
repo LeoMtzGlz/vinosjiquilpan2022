@@ -1,4 +1,4 @@
-from flask import render_template, request, flash
+from flask import render_template, request, flash, redirect, session
 import requests
 
 from . import cliente
@@ -34,6 +34,11 @@ def login_cliente():
             # LLamado a la API
             respuesta = requests.post(URL, json = request.form.to_dict() )
             # print(respuesta.json())
+            if respuesta.json()['estatus'] == 'OK-1':
+                # Crear variables de sesi+on
+                session['token'] = respuesta.json()['token']
+                session['nombre'] = respuesta.json()['datos']['nombre']
+                return redirect('/')
             flash ( respuesta.json()['mensaje'])
         # else:
         #     flash ( 'No se permiten valores vacios ')

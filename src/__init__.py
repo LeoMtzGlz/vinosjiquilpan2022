@@ -21,4 +21,7 @@ def create_app():
     from .clientes import cliente
     app.register_blueprint(cliente)
 
+    from .pedidos import pedido
+    app.register_blueprint(pedido)
+
     return app
